@@ -1,0 +1,1 @@
+<p class="mt-3 text-center">Copyright 2025 - NQSH</p>

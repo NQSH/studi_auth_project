@@ -1,0 +1,26 @@
+# Ignorer le dossier vendor
+/vendor/
+
+# Fichiers temporaires / caches
+*.log
+*.cache
+*.tmp
+
+# Environnement local
+.env
+.env.local
+.env.*
+
+# Dossiers système
+.DS_Store
+Thumbs.db
+
+# Node.js (si utilisé)
+node_modules/
+
+# IDE / éditeurs
+.vscode/
+.idea/
+
+# Composer files (lock peut être gardé selon ton workflow)
+composer.lock

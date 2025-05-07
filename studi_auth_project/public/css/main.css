@@ -1,0 +1,30 @@
+.navbar-brand {
+    font-weight: bold;
+}
+
+.home-app-name {
+    font-size: 10rem;
+    font-weight: bolder;
+}
+
+.welcome-text {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.error-page {
+    font-size: 2rem;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 20%;
+}
+
+.article {
+    & .card-title {
+        cursor: pointer;
+    }
+}
+
+textarea {
+    resize: none;
+}

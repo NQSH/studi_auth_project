@@ -1,0 +1,12 @@
+{
+    "name": "noshz/studi_auth_project",
+    "description": "Projet d'authentification + Blog",
+    "autoload": {
+        "psr-4": {
+            "Noshz\\StudiAuthProject\\": "app/"
+        }
+    },
+    "require": {
+        "mongodb/mongodb": "^2.0"
+    }
+}
