@@ -16,7 +16,16 @@ function generate_csrf_token(): void
 function check_csrf_token(): void
 {
     if (!isset($_SESSION['csrf_token']) || !isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-        render('error', 'Erreur', ['error' => 'Token CSRF invalide.']);
+        render('error', ['error' => 'Token CSRF invalide.']);
         exit;
+    }
+}
+
+function checkEmpty(...$args): void
+{
+    foreach ($args as $arg) {
+        if (empty($arg)) {
+            throw new Exception("Veuillez renseigner tous les champs obligatoires.");
+        }
     }
 }

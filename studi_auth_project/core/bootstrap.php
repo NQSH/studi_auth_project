@@ -57,7 +57,6 @@ function handleException(Throwable $e): void
     if (APP_ENV === 'dev') {
         echo "<pre>$message\n" . $e->getTraceAsString() . "</pre>";
     } else {
-        http_response_code(500);
-        echo "Une erreur interne est survenue.";
+        renderError(null);
     }
 }

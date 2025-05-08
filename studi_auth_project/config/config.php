@@ -1,5 +1,6 @@
 <?php
 define('APP_NAME', 'BLOX');
+define('BASE_URL', 'http://localhost:3000/');
 
 define('DB_DSN', "mysql:host=localhost;dbname=studi_auth_project;charset=utf8");
 define('DB_USER', 'studi_auth_project_users');
@@ -12,5 +13,5 @@ define('VIEW_PATH', dirname(__DIR__) . '/app/views');
 define('CONTROLLER_PATH', dirname(__DIR__) . '/app/controllers');
 define('MODEL_PATH', dirname(__DIR__) . '/app/models');
 
-define('APP_ENV', 'dev'); // ou 'prod'
+define('APP_ENV', 'prod'); // ou 'prod'
 define('LOG_PATH', dirname(__DIR__) . '/logs');

@@ -7,16 +7,12 @@ class ArticleController
         $page = isset($_GET['page']) ? (int)cleanInput($_GET['page']) : 1;
 
         $articles = Article::all($page);
-        foreach ($articles as $article) {
-            $article['author'] = User::findById($article['author_id'])->username;
-        }
         render('articles/index', ['articles' => $articles, 'page' => $page, 'total' => Article::count()]);
     }
 
     public function show($id)
     {
         $article = Article::find($id);
-        $article['author'] = User::findById($article['author_id'])->username;
 
         if (!$article) {
             renderNotFound();
@@ -34,21 +30,31 @@ class ArticleController
 
     public function create()
     {
+        requireLogin();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = [
-                'author_id' => $_SESSION['user']['id'],
-                'content' => cleanInput($_POST['content']),
-                'created_at' => new MongoDB\BSON\UTCDateTime(),
-            ];
-            Article::create($data);
-            redirect('articles');
-            exit;
+            try {
+                Article::create($_SESSION['user']['id'], $_POST['content']);
+                redirect('articles');
+            } catch (Exception $e) {
+                setResponseMessage('error', $e->getMessage());
+                redirect('articles');
+                return;
+            }
         }
     }
 
     public function edit($id)
     {
+        requireLogin();
+
+        if (!isset($id)) {
+            renderNotFound();
+            return;
+        }
+
         $article = Article::find($id);
+
         if (!$article) {
             renderNotFound();
             return;
@@ -60,8 +66,8 @@ class ArticleController
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = $_POST;
-            Article::update($id, $data);
+            check_csrf_token();
+            Article::update($id, $_POST);
             redirect('articles/' . $id);
             exit;
         }
@@ -71,8 +77,32 @@ class ArticleController
 
     public function delete($id)
     {
-        Article::delete($id);
-        redirect('articles');
-        exit;
+        requireLogin();
+
+        if (!isset($id)) {
+            renderNotFound();
+            return;
+        }
+
+        $article = Article::find($id);
+
+        if (!$article) {
+            renderNotFound();
+            return;
+        }
+
+        if ($article['author_id'] !== $_SESSION['user']['id']) {
+            renderForbidden();
+            return;
+        }
+
+        try {
+            Article::delete($id);
+            setResponseMessage('success', "Article supprimé avec succès.");
+            redirect('articles');
+        } catch (Exception $e) {
+            setResponseMessage('error', $e->getMessage());
+            redirect('articles');
+        }
     }
 }

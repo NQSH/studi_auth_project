@@ -1,6 +1,7 @@
 <div class="container d-flex flex-column gap-3">
     <?php if (isLoggedIn()): ?>
         <?php include 'create.php'; ?>
+        <?php displayResponse() ?>
         <br>
     <?php else: ?>
         <p class="text-center"><a href="/login">Connectez-vous</a> pour pouvoir ajouter un article.</p>

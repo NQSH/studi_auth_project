@@ -22,3 +22,9 @@ function renderForbidden(): void
     http_response_code(403);
     render('403', [], 'Vous n\'êtes pas autorisé à accéder à cette page');
 }
+
+function renderError(?string $message): void
+{
+    http_response_code(500);
+    render('error', ['error' => $message], 'Erreur');
+}

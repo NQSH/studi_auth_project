@@ -25,6 +25,6 @@ function requireLogin()
 function redirectIfLoggedIn()
 {
     if (isLoggedIn()) {
-        redirect('/articles');
+        redirect('articles');
     }
 }
