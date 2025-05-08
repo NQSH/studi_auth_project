@@ -12,8 +12,12 @@
 <body>
     <?php include __DIR__ . '/header.php'; ?>
 
-    <main class="container mt-4 d-flex flex-column align-items-center w-50">
-        <?php require $view; ?>
+    <main class="container-fluid">
+        <div class="row mt-4 d-flex flex-column align-items-center">
+            <div class="col-xl-6 col-lg-10 col-12 d-flex flex-column align-items-center">
+                <?php require $view; ?>
+            </div>
+        </div>
     </main>
 
     <?php include __DIR__ . '/footer.php'; ?>

@@ -8,12 +8,12 @@ function redirect(string $url)
 
 function displayError(string $message)
 {
-    echo "<div class='text-danger'>$message</div>";
+    echo "<div class='text-danger text-center'>$message</div>";
 }
 
 function displaySuccess(string $message)
 {
-    echo "<div class='text-success'>$message</div>";
+    echo "<div class='text-success text-center'>$message</div>";
 }
 
 function setResponseMessage(string $type, string $message): void

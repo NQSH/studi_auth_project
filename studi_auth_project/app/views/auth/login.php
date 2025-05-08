@@ -1,4 +1,4 @@
-<h1>Connexion</h1>
+<h1 class="text-center">Connexion</h1>
 
 <?php displayResponse() ?>
 
@@ -20,4 +20,4 @@
 
 </br>
 
-<p>Pas encore de compte ? <a href="/signup">Créer un compte</a></p>
+<p class="text-center">Pas encore de compte ? <a href="/signup">Créer un compte</a></p>

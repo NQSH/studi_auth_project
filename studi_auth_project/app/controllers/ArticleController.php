@@ -5,7 +5,6 @@ class ArticleController
     public function index()
     {
         $page = isset($_GET['page']) ? (int)cleanInput($_GET['page']) : 1;
-
         $articles = Article::all($page);
         render('articles/index', ['articles' => $articles, 'page' => $page, 'total' => Article::count()]);
     }
@@ -48,11 +47,6 @@ class ArticleController
     {
         requireLogin();
 
-        if (!isset($id)) {
-            renderNotFound();
-            return;
-        }
-
         $article = Article::find($id);
 
         if (!$article) {
@@ -78,11 +72,6 @@ class ArticleController
     public function delete($id)
     {
         requireLogin();
-
-        if (!isset($id)) {
-            renderNotFound();
-            return;
-        }
 
         $article = Article::find($id);
 

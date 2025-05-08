@@ -1,1 +1,1 @@
-<p class="not-found">Oups ! La page que vous recherchez n'existe pas.</p>
+<p class="error-page">Oups ! La page que vous recherchez n'existe pas.</p>

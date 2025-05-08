@@ -1,4 +1,4 @@
-<h1>Créer un compte</h1>
+<h1 class="text-center">Créer un compte</h1>
 
 <?php displayResponse() ?>
 
@@ -32,4 +32,4 @@
 
 </br>
 
-<p>Déjà un compte ? <a href="/login">Se connecter</a></p>
+<p class="text-center">Déjà un compte ? <a href="/login">Se connecter</a></p>
