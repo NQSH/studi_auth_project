@@ -55,6 +55,6 @@ class AuthController
     {
         requireLogin();
         destroySession();
-        redirect('/');
+        redirect('');
     }
 }
